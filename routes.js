@@ -25,4 +25,10 @@ router.post('/customers/', ({ body }, response, next) => {
   })().catch(next)
 })
 
+router.get('/customers', (request, response, next) => {
+  (async () => {
+    response.json(customers)
+  })().catch(next)
+})
+
 module.exports = router
