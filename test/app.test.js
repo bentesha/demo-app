@@ -4,6 +4,14 @@ const app = require('../app.js')
 
 const expect = chai.expect
 
+const knexfile = require('../knexfile')
+const Knex = require('knex')
+const { Model } = require('objection')
+
+// Init database connection
+const knex = Knex(knexfile.test)
+Model.knex(knex)
+
 describe('Express API', () => {
 
   describe('POST /customers', () => {

@@ -1,23 +1,24 @@
 const shortid = require('shortid')
+const Customer = require('./models/Customer')
 
 class Dao {
 
   constructor() {
-    this.customers = []
+
   }
 
-  getCustomers() {
-    return this.customers
+  async getCustomers() {
+    return Customer.query();
   }
 
-  createCustomer(customer) {
+  async createCustomer(customer) {
     customer.id = shortid.generate()
-    this.customers.push(customer)
+    Customer.query().insert(customer)
     return customer
   }
 
-  getById(customerId) {
-    return this.customers.find(i => i.id === customerId)
+  async getById(customerId) {
+    return Customer.query().findById(customerId)
   }
 }
 

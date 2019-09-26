@@ -17,14 +17,14 @@ router.post('/customers/', ({ body }, response, next) => {
 
     const { error, value } = schema.validate(body)
     if (error) { return next(error) }
-    const created = dao.createCustomer(value)
+    const created = await dao.createCustomer(value)
     response.json(created)
   })().catch(next)
 })
 
 router.get('/customers', (request, response, next) => {
   (async () => {
-    response.json(dao.getCustomers())
+    response.json(await dao.getCustomers())
   })().catch(next)
 })
 
