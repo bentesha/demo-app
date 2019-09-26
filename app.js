@@ -13,7 +13,7 @@ const routes = require('./routes')
 app.use(routes)
 app.use((error, request, response, next) => {
   if (error.isJoi) {
-    return response.send('Sorry, you have validation error!')
+    return response.sendStatus(400)
   }
   next(error)
 })

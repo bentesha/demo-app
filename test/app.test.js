@@ -30,6 +30,16 @@ describe('Express API', () => {
       expect(response.body.id).to.be.ok
     })
 
+    it('should return status 400 if validation fails', async () => {
+      const customer = {
+        phoneNumber: '12384844'
+      }
+
+      await supertest(app)
+        .post('/customers')
+        .send(customer)
+        .expect(400)
+    })
   })
 
 })
