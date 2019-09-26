@@ -12,7 +12,8 @@ router.post('/customers/', ({ body }, response, next) => {
   (async () => {
     const schema = Joi.object({
       firstName: Joi.string().required(),
-      lastName: Joi.string().required()
+      lastName: Joi.string().required(),
+      phoneNumber: Joi.string().allow(['', null])
     })
 
     const { error, value } = schema.validate(body)

@@ -16,7 +16,8 @@ describe('Dao', () => {
     it('it should create customer and assign id', async () => {
       const customer = {
         firstName: 'Albert',
-        lastName: 'Kilima'
+        lastName: 'Kilima',
+        phoneNumber: '398388373'
       }
 
       const result = await dao.createCustomer(customer)
@@ -24,6 +25,7 @@ describe('Dao', () => {
       expect(result.id).to.be.string
       expect(result.firstName).to.equal(customer.firstName)
       expect(result.lastName).to.equal(customer.lastName)
+      expect(result.phoneNumber).to.equal(customer.phoneNumber)
     })
   })
 })
